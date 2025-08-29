@@ -5,3 +5,9 @@ Rails.application.routes.draw do
     end
   end
 end
+# config/routes.rb
+require 'sidekiq/web'
+Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
+  # your other routes...
+end

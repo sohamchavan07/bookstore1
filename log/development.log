@@ -485,3 +485,52 @@ Completed 200 OK in 162ms (Views: 97.3ms | ActiveRecord: 3.5ms (1 query, 0 cache
 
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='BookStore'*/[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION /*application='BookStore'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='BookStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='BookStore'*/[0m
+Migrating to CreateJobLogs (20250829190150)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='BookStore'*/[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "job_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "job_name" varchar, "status" varchar, "executed_at" datetime(6), "message" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='BookStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250829190150') RETURNING "version" /*application='BookStore'*/[0m
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='BookStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='BookStore'*/[0m
+Started GET "/books" for ::1 at 2025-08-30 00:45:54 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='BookStore'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/books"):
+  
+Started GET "/sidekiq" for ::1 at 2025-08-30 00:46:09 +0530
+Started GET "/sidekiq/stylesheets/style.css" for ::1 at 2025-08-30 00:46:09 +0530
+Started GET "/sidekiq/javascripts/application.js" for ::1 at 2025-08-30 00:46:09 +0530
+Started GET "/sidekiq/javascripts/chartjs-adapter-date-fns.min.js" for ::1 at 2025-08-30 00:46:09 +0530
+Started GET "/sidekiq/javascripts/base-charts.js" for ::1 at 2025-08-30 00:46:10 +0530
+Started GET "/sidekiq/javascripts/dashboard-charts.js" for ::1 at 2025-08-30 00:46:10 +0530
+Started GET "/sidekiq/javascripts/chart.min.js" for ::1 at 2025-08-30 00:46:10 +0530
+Started GET "/sidekiq/javascripts/dashboard.js" for ::1 at 2025-08-30 00:46:10 +0530
+Started GET "/sidekiq/javascripts/chartjs-plugin-annotation.min.js" for ::1 at 2025-08-30 00:46:10 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:10 +0530
+Started GET "/sidekiq/images/favicon.ico" for ::1 at 2025-08-30 00:46:10 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:15 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:20 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:26 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:30 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:35 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:40 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:45 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:50 +0530
+Started GET "/sidekiq/" for ::1 at 2025-08-30 00:46:51 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:52 +0530
+Started GET "/sidekiq/" for ::1 at 2025-08-30 00:46:53 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:53 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:46:58 +0530
+Started GET "/sidekiq/profiles" for ::1 at 2025-08-30 00:47:01 +0530
+Started GET "/sidekiq/" for ::1 at 2025-08-30 00:47:03 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:47:04 +0530
+Started GET "/sidekiq/" for ::1 at 2025-08-30 00:47:04 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:47:05 +0530
+Started GET "/sidekiq/?days=7" for ::1 at 2025-08-30 00:47:09 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:47:09 +0530
+Started GET "/sidekiq/?days=180" for ::1 at 2025-08-30 00:47:12 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:47:12 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:47:17 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:47:23 +0530
+Started GET "/sidekiq/stats" for ::1 at 2025-08-30 00:47:28 +0530
