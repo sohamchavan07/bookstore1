@@ -1,71 +1,37 @@
-class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show edit update destroy ]
+module Api
+  module V1
+    class BooksController < ApplicationController
+      # GET /api/v1/books
+      def index
+        books = Book.all
+        render json: BookSerializer.new(books).serializable_hash, status: :ok
+      end
 
-  # GET /books or /books.json
-  def index
-    @books = Book.all
-  end
+      # GET /api/v1/books/:id
+      def show
+        book = Book.find_by(id: params[:id])
+        if book
+          render json: BookSerializer.new(book).serializable_hash, status: :ok
+        else
+          render json: { error: "Book not found" }, status: :not_found
+        end
+      end
 
-  # GET /books/1 or /books/1.json
-  def show
-  end
+      # POST /api/v1/books
+      def create
+        book = Book.new(book_params)
+        if book.save
+          render json: BookSerializer.new(book).serializable_hash, status: :created
+        else
+          render json: { errors: book.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
 
-  # GET /books/new
-  def new
-    @book = Book.new
-  end
+      private
 
-  # GET /books/1/edit
-  def edit
-  end
-
-  # POST /books or /books.json
-  def create
-    @book = Book.new(book_params)
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: "Book was successfully created." }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
+      def book_params
+        params.require(:book).permit(:title, :author, :price, :category_id)
       end
     end
   end
-
-  # PATCH/PUT /books/1 or /books/1.json
-  def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: "Book was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @book }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /books/1 or /books/1.json
-  def destroy
-    @book.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to books_path, notice: "Book was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params.expect(:id))
-    end
-
-    # Only allow a list of trusted parameters through.
-    def book_params
-      params.require(:book).permit(:title, :author, :price, :category_id)
-    end
-    
 end
