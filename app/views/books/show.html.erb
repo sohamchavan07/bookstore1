@@ -1,0 +1,15 @@
+<div class="book-card">
+  <h2 class="book-title"><%= @book.title %></h2>
+  <div class="book-author">by <%= @book.author %></div>
+  <div class="book-price">₹<%= number_with_precision(@book.price, precision: 2) %></div>
+  <p><em>Published: <%= @book.published_on %></em></p>
+  <p><strong>Details:</strong> <%= @book.formatted_details %></p>
+
+  <%= link_to "Edit", edit_book_path(@book), class: "btn-edit" %>
+  <%= link_to "Back", books_path, class: "btn-show" %>
+</div>
+
+<p>
+  <strong>Category:</strong>
+  <%= book.category.name if book.category %>
+</p>

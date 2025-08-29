@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookStore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header>📚 BookStore</header>
+    <main class="container">
+      <%= yield %>
+    </main>
+  </body>
+</html>

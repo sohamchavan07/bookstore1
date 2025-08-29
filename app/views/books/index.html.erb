@@ -1,0 +1,17 @@
+<h1>All Books</h1>
+
+<% @books.each do |book| %>
+  <div class="book-card">
+    <div class="book-title"><%= book.title %></div>
+    <div class="book-author">by <%= book.author %></div>
+    <div class="book-price">₹<%= number_with_precision(book.price, precision: 2) %></div>
+    <p class="mb-2"><em>Published: <%= book.published_on %></em></p>
+    <p><strong>Details:</strong> <%= book.formatted_details %></p>
+
+    <%= link_to "Show", book, class: "btn-show" %>
+    <%= link_to "Edit", edit_book_path(book), class: "btn-edit" %>
+    <%= link_to "Destroy", book, class: "btn-destroy", data: { confirm: "Are you sure?" }, method: :delete %>
+  </div>
+<% end %>
+
+<%= link_to "➕ Add New Book", new_book_path, class: "btn-new" %>
